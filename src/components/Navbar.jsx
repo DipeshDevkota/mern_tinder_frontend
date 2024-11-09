@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 import axios from "axios";
 import {removeUser} from "../utils/userSlice"
-import { disconnectSocket } from "../socket/socket.client";
+// import { disconnectSocket } from "../socket/socket.client";
 const Navbar = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const Navbar = () => {
         }
       );
       dispatch(removeUser());
-      disconnectSocket()
+      // disconnectSocket()
 
       navigate("/login")
 
@@ -32,7 +32,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-200">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">
+        <Link to="/feed" className="btn btn-ghost text-xl">
           DevTinder
         </Link>
       </div>

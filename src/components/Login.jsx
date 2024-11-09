@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { BASE_URL } from "../utils/constants";
-import { initializeSocket } from '../socket/socket.client'; // Import your socket initialization function
-
+// import { initializeSocket } from '../socket/socket.client'; // Import your socket initialization function
+// import Cookies from 'js-cookie';
 const Login = () => {
     const [emailId, setEmailId] = useState("");
     const [password, setPassword] = useState("");
@@ -23,12 +23,14 @@ const Login = () => {
             }, {
                 withCredentials: true // Allow cookies to be sent with the request
             });
-            
+
+           localStorage.setItem("token",res.data.token)
+                       
             // Dispatch user data to Redux store
             dispatch(addUser(res.data.user)); // Update Redux store with user data
             
             // Initialize socket with token and user ID
-            initializeSocket(res.data.token, res.data.user._id);
+            // initializeSocket(res.data.token, res.data.user._id);
 
             // Navigate to feed after successful login
             navigate("/feed");
