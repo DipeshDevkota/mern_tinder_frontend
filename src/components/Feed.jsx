@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../utils/feedSlice";
 import Card from "./UserCard";
+import Navbar from "./Navbar";
 
 const Feed = () => {
   const feed = useSelector((store) => store.feed);
@@ -35,9 +36,12 @@ const Feed = () => {
   }
 
   return (
+    <>
+    {/* <Navbar/> */}
     <div className="flex justify-center my-10">
       <Card user={feed[0]} /> {/* Ensure feed[0] is correct */}
     </div>
+    </>
   );
 };
 

@@ -29,6 +29,7 @@ const Connections = () => {
   }
 
   const handleChatClick = (connectionId) => {
+    console.log("connection id is",connectionId)
     navigate(`/chat/${connectionId}`);
   };
 
